@@ -1,4 +1,5 @@
 import { ArrowRight, TrendingUp } from "lucide-react"
+import { FadeUp, Stagger, StaggerItem } from "@/components/motion"
 
 const caseStudies = [
   {
@@ -77,69 +78,70 @@ export function CaseStudiesSection() {
   return (
     <section id="case-studies" className="bg-secondary/30 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-4 flex items-center justify-between">
-          <div>
-            <h2 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">
-              導入実績
-            </h2>
-            <p className="text-muted-foreground">
-              豊富な実績で御社の課題を解決します
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-12 space-y-6">
-          {caseStudies.map((study, index) => (
-            <div
-              key={index}
-              className="rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md"
-            >
-              <div className="mb-4 flex flex-wrap items-center gap-2">
-                <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
-                  {study.industry}
-                </span>
-                <span className="rounded bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
-                  {study.category}
-                </span>
-              </div>
-              
-              <h3 className="mb-4 text-lg font-bold text-foreground">
-                {study.title}
-              </h3>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                <div>
-                  <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-muted-foreground">
-                    課題
-                  </h4>
-                  <ul className="space-y-2">
-                    {study.challenges.map((challenge, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground" />
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-primary">
-                    <TrendingUp className="h-4 w-4" />
-                    効果
-                  </h4>
-                  <ul className="space-y-2">
-                    {study.effects.map((effect, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-foreground">
-                        <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                        {effect}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+        <FadeUp>
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h2 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">
+                導入実績
+              </h2>
+              <p className="text-muted-foreground">
+                豊富な実績で御社の課題を解決します
+              </p>
             </div>
+          </div>
+        </FadeUp>
+
+        <Stagger className="mt-12 space-y-6">
+          {caseStudies.map((study, index) => (
+            <StaggerItem key={index}>
+              <div className="rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                  <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                    {study.industry}
+                  </span>
+                  <span className="rounded bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
+                    {study.category}
+                  </span>
+                </div>
+                
+                <h3 className="mb-4 text-lg font-bold text-foreground">
+                  {study.title}
+                </h3>
+
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-muted-foreground">
+                      課題
+                    </h4>
+                    <ul className="space-y-2">
+                      {study.challenges.map((challenge, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-muted-foreground" />
+                          {challenge}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold text-primary">
+                      <TrendingUp className="h-4 w-4" />
+                      効果
+                    </h4>
+                    <ul className="space-y-2">
+                      {study.effects.map((effect, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                          <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                          {effect}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   )

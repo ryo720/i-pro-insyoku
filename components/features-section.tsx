@@ -1,4 +1,5 @@
 import { BarChart3, Brain, ClipboardCheck, Receipt, Truck, Utensils } from "lucide-react"
+import { FadeUp, Stagger, StaggerItem } from "@/components/motion"
 
 const features = [
   {
@@ -37,33 +38,34 @@ export function FeaturesSection() {
   return (
     <section id="features" className="bg-secondary/50 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
-            機能
-          </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
-            飲食店運営のあらゆる課題を解決する高度な機能群
-          </p>
-        </div>
+        <FadeUp>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
+              機能
+            </h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
+              飲食店運営のあらゆる課題を解決する高度な機能群
+            </p>
+          </div>
+        </FadeUp>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg"
-            >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <feature.icon className="h-6 w-6" />
+            <StaggerItem key={index} className="h-full">
+              <div className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <feature.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-foreground">
-                {feature.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {feature.description}
-              </p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   )

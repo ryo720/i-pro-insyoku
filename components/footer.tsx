@@ -27,18 +27,17 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-white py-12 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
+    <footer className="border-t border-border bg-muted/30">
+      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
-            <Link href="https://www.i-pro.site/" className="inline-block text-xl font-bold">
-              <span className="text-[#00D4AA]">I-</span>
-              <span className="text-[#333333]">PRO</span>
+            <Link href="/" className="inline-block text-xl font-bold text-foreground">
+              I-<span className="text-primary">PRO</span>
             </Link>
-            <p className="mt-4 text-sm text-[#333333]">
+            <p className="mt-4 text-sm text-muted-foreground">
               株式会社I-PRO
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-[#666666]">
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               〒141-0022
               <br />
               東京都品川区東五反田5丁目22番5号
@@ -48,15 +47,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-medium text-[#333333]">
+            <h4 className="text-sm font-semibold text-foreground">
               {footerLinks.services.title}
             </h4>
-            <ul className="space-y-3">
+            <ul className="mt-4 space-y-3">
               {footerLinks.services.links.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -68,15 +67,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-medium text-[#333333]">
+            <h4 className="text-sm font-semibold text-foreground">
               {footerLinks.company.title}
             </h4>
-            <ul className="space-y-3">
+            <ul className="mt-4 space-y-3">
               {footerLinks.company.links.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -88,15 +87,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-medium text-[#333333]">
+            <h4 className="text-sm font-semibold text-foreground">
               {footerLinks.product.title}
             </h4>
-            <ul className="space-y-3">
+            <ul className="mt-4 space-y-3">
               {footerLinks.product.links.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
                   </Link>
@@ -106,8 +105,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-sm text-[#666666]">
+        <div className="mt-12 border-t border-border pt-8">
+          <p className="text-center text-sm text-muted-foreground">
             © 2026 株式会社I-PRO. All rights reserved.
           </p>
         </div>

@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react"
+import { FadeUp, Stagger, StaggerItem } from "@/components/motion"
 
 const testimonials = [
   {
@@ -32,35 +33,36 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
-            お客様の声
-          </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
-            導入企業様からいただいた声をご紹介します
-          </p>
-        </div>
+        <FadeUp>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
+              お客様の声
+            </h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
+              導入企業様からいただいた声をご紹介します
+            </p>
+          </div>
+        </FadeUp>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="flex flex-col rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md"
-            >
-              <Quote className="mb-4 h-8 w-8 text-primary/30" />
-              
-              <p className="mb-6 flex-1 text-sm leading-relaxed text-foreground">
-                {testimonial.content}
-              </p>
+            <StaggerItem key={index} className="h-full">
+              <div className="flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
+                <Quote className="mb-4 h-8 w-8 text-primary/30" />
+                
+                <p className="mb-6 flex-1 text-sm leading-relaxed text-foreground">
+                  {testimonial.content}
+                </p>
 
-              <div className="border-t border-border pt-4">
-                <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
-                  {testimonial.industry}
-                </span>
+                <div className="border-t border-border pt-4">
+                  <span className="rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                    {testimonial.industry}
+                  </span>
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   )

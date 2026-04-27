@@ -4,131 +4,112 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useState } from "react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="https://www.i-pro.site/" className="flex items-center">
-          <span className="text-xl font-bold">
-            <span className="text-[#00D4AA]">I-</span>
-            <span className="text-[#333333]">PRO</span>
-          </span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
+        <div className="flex lg:flex-1">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="text-xl font-bold text-foreground">
+              I-<span className="text-primary">PRO</span>
+            </span>
+          </Link>
+        </div>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link 
-            href="https://www.i-pro.site/" 
-            className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
-          >
+        <div className="hidden lg:flex lg:gap-x-8">
+          <Link className="text-sm font-medium text-foreground transition-colors hover:text-foreground" href="/">
             TOP
           </Link>
-          <div className="group relative">
-            <button className="flex items-center gap-1 text-sm text-[#333333] transition-colors hover:text-[#00D4AA]">
-              サービス
-              <ChevronDown className="h-3 w-3" />
-            </button>
-            <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-              <div className="min-w-40 rounded-lg border border-gray-100 bg-white p-2 shadow-lg">
-                <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block rounded px-3 py-2 text-sm text-[#333333] transition-colors hover:bg-gray-50 hover:text-[#00D4AA]"
-                >
-                  ITコンサルティング
-                </Link>
-                <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block rounded px-3 py-2 text-sm text-[#333333] transition-colors hover:bg-gray-50 hover:text-[#00D4AA]"
-                >
-                  受託開発
-                </Link>
-                <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block rounded px-3 py-2 text-sm text-[#333333] transition-colors hover:bg-gray-50 hover:text-[#00D4AA]"
-                >
-                  SES
-                </Link>
-              </div>
-            </div>
-          </div>
-          <Link 
-            href="#" 
-            className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
-          >
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                サービス
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem asChild>
+                <Link href="/services/consulting">ITコンサルティング</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/services/development">受託開発</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/services/ses">SES</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/products">
             プロダクト
           </Link>
-          <Link 
-            href="https://www.i-pro.site/" 
-            className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
-          >
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/company">
             会社情報
           </Link>
-          <Link 
-            href="https://www.i-pro.site/" 
-            className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
-          >
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/careers">
             採用情報
           </Link>
-          <Link 
-            href="https://www.i-pro.site/" 
-            className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
-          >
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/contact">
             お問い合わせ
           </Link>
-        </nav>
+        </div>
 
-        <div className="hidden md:block">
-          <Button 
-            className="rounded-full bg-[#00D4AA] px-6 text-white hover:bg-[#00D4AA]/90"
-            asChild
-          >
-            <Link href="https://www.i-pro.site/">
-              お問い合わせ
-            </Link>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <Button asChild>
+            <Link href="/contact">お問い合わせ</Link>
           </Button>
         </div>
 
         <button
-          className="md:hidden"
+          className="lg:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="メニューを開く"
+          aria-label={mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
         >
-          {mobileMenuOpen ? <X className="h-6 w-6 text-[#333333]" /> : <Menu className="h-6 w-6 text-[#333333]" />}
+          <span className="sr-only">{mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}</span>
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-      </div>
+      </nav>
 
       {mobileMenuOpen && (
-        <div className="border-t border-gray-100 bg-white md:hidden">
+        <div className="border-t border-border bg-background lg:hidden">
           <nav className="flex flex-col gap-4 p-4">
             <Link 
-              href="https://www.i-pro.site/" 
-              className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
+              href="/" 
+              className="text-sm font-medium text-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               TOP
             </Link>
             <div className="space-y-2">
-              <span className="text-sm text-[#333333]">サービス</span>
+              <span className="text-sm font-medium text-foreground">サービス</span>
               <div className="ml-4 space-y-2">
                 <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                  href="/services/consulting" 
+                  className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   ITコンサルティング
                 </Link>
                 <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                  href="/services/development" 
+                  className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   受託開発
                 </Link>
                 <Link 
-                  href="https://www.i-pro.site/" 
-                  className="block text-sm text-[#666666] transition-colors hover:text-[#00D4AA]"
+                  href="/services/ses" 
+                  className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   SES
@@ -136,40 +117,38 @@ export function Header() {
               </div>
             </div>
             <Link 
-              href="#" 
-              className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
+              href="/products" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               プロダクト
             </Link>
             <Link 
-              href="https://www.i-pro.site/" 
-              className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
+              href="/company" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               会社情報
             </Link>
             <Link 
-              href="https://www.i-pro.site/" 
-              className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
+              href="/careers" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               採用情報
             </Link>
             <Link 
-              href="https://www.i-pro.site/" 
-              className="text-sm text-[#333333] transition-colors hover:text-[#00D4AA]"
+              href="/contact" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               お問い合わせ
             </Link>
             <Button 
-              className="mt-2 w-full rounded-full bg-[#00D4AA] text-white hover:bg-[#00D4AA]/90"
+              className="mt-2 w-full"
               asChild
             >
-              <Link href="https://www.i-pro.site/">
-                お問い合わせ
-              </Link>
+              <Link href="/contact">お問い合わせ</Link>
             </Button>
           </nav>
         </div>
