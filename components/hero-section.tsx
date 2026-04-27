@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { FadeUp } from "@/components/motion"
 
+const MAIN_SITE = "https://www.i-pro.site"
+
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-white py-20 md:py-32">
@@ -45,7 +47,7 @@ export function HeroSection() {
               className="gap-2 rounded-full bg-[#00D4AA] px-8 text-white hover:bg-[#00D4AA]/90"
               asChild
             >
-              <Link href="#contact">
+              <Link href={`${MAIN_SITE}/contact`}>
                 お問い合わせ
                 <ArrowRight className="h-4 w-4" />
               </Link>

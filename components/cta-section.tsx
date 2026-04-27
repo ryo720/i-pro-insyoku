@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { FadeUp } from "@/components/motion"
 
+const MAIN_SITE = "https://www.i-pro.site"
+
 export function CTASection() {
   return (
     <section id="contact" className="bg-background py-20 md:py-28">
@@ -22,7 +24,7 @@ export function CTASection() {
                 className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
                 asChild
               >
-                <Link href="/contact">
+                <Link href={`${MAIN_SITE}/contact`}>
                   お問い合わせ
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -33,7 +35,7 @@ export function CTASection() {
                 className="border-border text-foreground hover:bg-secondary"
                 asChild
               >
-                <Link href="/careers">
+                <Link href={`${MAIN_SITE}/careers`}>
                   採用情報を見る
                 </Link>
               </Button>

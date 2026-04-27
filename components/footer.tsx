@@ -1,26 +1,28 @@
 import Link from "next/link"
 
+const MAIN_SITE = "https://www.i-pro.site"
+
 const footerLinks = {
   services: {
     title: "サービス",
     links: [
-      { label: "ITコンサルティング", href: "https://www.i-pro.site/" },
-      { label: "受託開発", href: "https://www.i-pro.site/" },
-      { label: "SES", href: "https://www.i-pro.site/" },
+      { label: "ITコンサルティング", href: `${MAIN_SITE}/services/consulting` },
+      { label: "受託開発", href: `${MAIN_SITE}/services/development` },
+      { label: "SES", href: `${MAIN_SITE}/services/ses` },
     ],
   },
   company: {
     title: "企業情報",
     links: [
-      { label: "会社情報", href: "https://www.i-pro.site/" },
-      { label: "採用情報", href: "https://www.i-pro.site/" },
-      { label: "お問い合わせ", href: "https://www.i-pro.site/" },
+      { label: "会社情報", href: `${MAIN_SITE}/company` },
+      { label: "採用情報", href: `${MAIN_SITE}/careers` },
+      { label: "お問い合わせ", href: `${MAIN_SITE}/contact` },
     ],
   },
   product: {
     title: "プロダクト",
     links: [
-      { label: "自社プロダクト", href: "#" },
+      { label: "自社プロダクト", href: `${MAIN_SITE}/products` },
     ],
   },
 }
@@ -31,7 +33,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
-            <Link href="/" className="inline-block text-xl font-bold text-foreground">
+            <Link href={`${MAIN_SITE}/`} className="inline-block text-xl font-bold text-foreground">
               I-<span className="text-primary">PRO</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
@@ -56,8 +58,6 @@ export function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     {link.label}
                   </Link>
@@ -76,8 +76,6 @@ export function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     {link.label}
                   </Link>

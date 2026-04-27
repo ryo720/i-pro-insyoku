@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+const MAIN_SITE = "https://www.i-pro.site"
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -18,7 +20,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href={`${MAIN_SITE}/`} className="-m-1.5 p-1.5">
             <span className="text-xl font-bold text-foreground">
               I-<span className="text-primary">PRO</span>
             </span>
@@ -26,7 +28,7 @@ export function Header() {
         </div>
 
         <div className="hidden lg:flex lg:gap-x-8">
-          <Link className="text-sm font-medium text-foreground transition-colors hover:text-foreground" href="/">
+          <Link className="text-sm font-medium text-foreground transition-colors hover:text-foreground" href={`${MAIN_SITE}/`}>
             TOP
           </Link>
 
@@ -39,34 +41,34 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
-                <Link href="/services/consulting">ITコンサルティング</Link>
+                <Link href={`${MAIN_SITE}/services/consulting`}>ITコンサルティング</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/services/development">受託開発</Link>
+                <Link href={`${MAIN_SITE}/services/development`}>受託開発</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/services/ses">SES</Link>
+                <Link href={`${MAIN_SITE}/services/ses`}>SES</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/products">
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href={`${MAIN_SITE}/products`}>
             プロダクト
           </Link>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/company">
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href={`${MAIN_SITE}/company`}>
             会社情報
           </Link>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/careers">
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href={`${MAIN_SITE}/careers`}>
             採用情報
           </Link>
-          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href="/contact">
+          <Link className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground" href={`${MAIN_SITE}/contact`}>
             お問い合わせ
           </Link>
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Button asChild>
-            <Link href="/contact">お問い合わせ</Link>
+            <Link href={`${MAIN_SITE}/contact`}>お問い合わせ</Link>
           </Button>
         </div>
 
@@ -84,7 +86,7 @@ export function Header() {
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="flex flex-col gap-4 p-4">
             <Link 
-              href="/" 
+              href={`${MAIN_SITE}/`} 
               className="text-sm font-medium text-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -94,21 +96,21 @@ export function Header() {
               <span className="text-sm font-medium text-foreground">サービス</span>
               <div className="ml-4 space-y-2">
                 <Link 
-                  href="/services/consulting" 
+                  href={`${MAIN_SITE}/services/consulting`} 
                   className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   ITコンサルティング
                 </Link>
                 <Link 
-                  href="/services/development" 
+                  href={`${MAIN_SITE}/services/development`} 
                   className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   受託開発
                 </Link>
                 <Link 
-                  href="/services/ses" 
+                  href={`${MAIN_SITE}/services/ses`} 
                   className="block text-sm text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -117,28 +119,28 @@ export function Header() {
               </div>
             </div>
             <Link 
-              href="/products" 
+              href={`${MAIN_SITE}/products`} 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               プロダクト
             </Link>
             <Link 
-              href="/company" 
+              href={`${MAIN_SITE}/company`} 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               会社情報
             </Link>
             <Link 
-              href="/careers" 
+              href={`${MAIN_SITE}/careers`} 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               採用情報
             </Link>
             <Link 
-              href="/contact" 
+              href={`${MAIN_SITE}/contact`} 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -148,7 +150,7 @@ export function Header() {
               className="mt-2 w-full"
               asChild
             >
-              <Link href="/contact">お問い合わせ</Link>
+              <Link href={`${MAIN_SITE}/contact`}>お問い合わせ</Link>
             </Button>
           </nav>
         </div>
