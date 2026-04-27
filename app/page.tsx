@@ -2,6 +2,8 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { FeaturesSection } from "@/components/features-section"
 import { BenefitsSection } from "@/components/benefits-section"
+import { CaseStudiesSection } from "@/components/case-studies-section"
+import { TestimonialsSection } from "@/components/testimonials-section"
 import { PlansSection } from "@/components/plans-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
@@ -14,6 +16,8 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <BenefitsSection />
+        <CaseStudiesSection />
+        <TestimonialsSection />
         <PlansSection />
         <CTASection />
       </main>
